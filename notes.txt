@@ -1,0 +1,4 @@
+#install prisma in next/ts project
+npm i prisma --save-dev
+#init prisma
+npx prisma init --datasource-provider postgresql
