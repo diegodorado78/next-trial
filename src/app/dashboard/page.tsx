@@ -1,15 +1,17 @@
-'use client'
-import Home from '../page'
-import styles from './dashboard.module.css'
+"use client"
+import { useSearchParams } from "next/navigation";
+import CustomerDetail from "./customerDetail/page"
+import SearchBar from "@/ui/searchBar";
 
-import React, { Suspense } from 'react'
-const page = () => {
 
+function Dashboard() {
+    const userSearchParams = useSearchParams();
     return (
-        <div > hola mundo
-            <Home />
+        <div >
+            <SearchBar placeholder="Buscar..." />
+            <CustomerDetail searchParams={{ query: userSearchParams.get('query') }} />
         </div>
     )
 }
 
-export default page
+export default Dashboard
