@@ -2,6 +2,8 @@
 import { useSearchParams } from "next/navigation";
 import CustomerDetail from "./customerDetail/page"
 import SearchBar from "@/ui/searchBar";
+import { Suspense } from "react";
+import LoadingSpinner from "../components/loadingSpinner";
 
 
 function Dashboard() {
@@ -9,7 +11,9 @@ function Dashboard() {
     return (
         <div >
             <SearchBar placeholder="Buscar..." />
-            <CustomerDetail searchParams={{ query: userSearchParams.get('query') }} />
+            <Suspense fallback={<LoadingSpinner />}>
+                <CustomerDetail searchParams={{ query: userSearchParams.get('query') }} />
+            </Suspense>
         </div>
     )
 }

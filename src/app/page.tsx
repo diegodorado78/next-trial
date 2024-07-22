@@ -1,4 +1,3 @@
-import { Image } from "@nextui-org/react";
 import UserList from "./components/userList";
 function Home() {
   return (

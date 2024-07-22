@@ -1,14 +1,14 @@
 "use client"
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { CiSearch } from "react-icons/ci";
-
+import { useDebouncedCallback } from "use-debounce";
 export default function SearchBar({ placeholder }: { placeholder: string }) {
     const searchParams = useSearchParams();
-    //console.log(searchParams.get('query'));//it must specify the parameter name to get the value; in this case 'query
     const pathname = usePathname();//the current path of the url
     const { replace } = useRouter();// destructuring the replace method from the useRouter hook
+    //console.log(searchParams.get('query'));//it must specify the parameter name to get the value; in this case 'query
 
-    function handleSearch(term: string) {//generate the part to add  to the url
+    const handleSearch = useDebouncedCallback((term: string) => {//helps to avoid making the call to the api every time the user types a letter
         const params = new URLSearchParams(searchParams);//API provides read and write access to the query of a URL. connect the searchparams api to the URLSearchParams object
         if (term) {
             params.set('query', term);//set the query parameter adding it to the current url
@@ -16,7 +16,7 @@ export default function SearchBar({ placeholder }: { placeholder: string }) {
         } else {
             params.delete('query');
         }
-    }
+    }, 10)
 
 
     return (

@@ -1,7 +1,6 @@
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
 
 export async function fetchUsers() {
-
     try {
         const response = await fetch(`${baseUrl}/users/`);
         if (!response.ok) {

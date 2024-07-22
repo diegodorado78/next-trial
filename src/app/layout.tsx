@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import "../ui/globals.css";
-import Navbar from "./components/Navbar";
 import { Providers } from "./providers";
 import { montserrat } from "@/ui/fonts";
+import Navbar from "./components/navbar";
 export const metadata: Metadata = {
   title: 'Eagles Virtual education',
   description: 'Education online',
@@ -26,5 +26,6 @@ export default function RootLayout({
         </Providers>
       </body>
     </html >
+
   );
 }

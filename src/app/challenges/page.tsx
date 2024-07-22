@@ -1,8 +1,10 @@
-import { ReactNode } from "react"
+import { Counter } from "../components/counter"
 
-const Challenges = ({ children }: { children: ReactNode }) => {
+function Challenges() {
     return (
-        <div> this is the Challenges page</div>
+        <div> this is the Challenges page
+            <Counter />
+        </div>
     )
 }
 
