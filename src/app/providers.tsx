@@ -1,3 +1,4 @@
+'use client'
 import { StoreProvider } from '@/lib/store/provider'
 import { NextUIProvider } from '@nextui-org/react'
 

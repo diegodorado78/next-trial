@@ -6,10 +6,10 @@ async function UserList() {
     return (
         <div>
             {usersList?.map((user) => (
-                <div className="flex flex-col p-2" key={user.id} >
-                    <p>  Nombre:{user.userName}</p>
-                    <p>  Correo:{user.email}</p>
-                </div>
+                <ul className="flex flex-col p-2" key={user.id} >
+                    <li>  Nombre: {user.userName}</li>
+                    <li>  Correo: {user.email}</li>
+                </ul>
             ))}
         </div>
     )
