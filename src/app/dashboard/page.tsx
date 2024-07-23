@@ -1,18 +1,15 @@
-"use client"
-import { useSearchParams } from "next/navigation";
-import CustomerDetail from "./customerDetail/page"
-import SearchBar from "@/ui/searchBar";
-import { Suspense } from "react";
-import LoadingSpinner from "../components/loadingSpinner";
+import { Suspense } from "react"
+import CustomerDetail from "../components/customerDetail"
+import SearchBar from "../components/searchBar"
 
 
-function Dashboard() {
-    const userSearchParams = useSearchParams();
+function Dashboard({ searchParams }: { searchParams?: { query?: string } }) { //desde el server llegan los searchparams
+    const userId = searchParams?.query || '' //lo recibe automaticamente desde el server
     return (
         <div >
-            <SearchBar placeholder="Buscar..." />
-            <Suspense fallback={<LoadingSpinner />}>
-                <CustomerDetail searchParams={{ query: userSearchParams.get('query') }} />
+            <SearchBar />
+            <Suspense fallback={<div className="bg-red-500">Loading...</div>}>
+                <CustomerDetail query={userId} />
             </Suspense>
         </div>
     )

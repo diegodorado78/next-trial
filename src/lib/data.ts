@@ -14,12 +14,12 @@ export async function fetchUsers() {
     }
 }
 
-export async function fetchUserById({ id }: { id: string | number | undefined | null }) {
-    if (id === undefined || id === null || id === '') {
+export async function fetchUserById({ query }: { query: string | undefined | null }) {
+    if (query === undefined || query === null || query === '') {
         return null;
     }
     try {
-        const response = await fetch(`${baseUrl}/users/id/${id}`);
+        const response = await fetch(`${baseUrl}/users/id/${query}`);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
